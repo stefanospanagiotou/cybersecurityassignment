@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Level 5 - RSA Quiz</title>
+<style>
+body { font-family: Arial, sans-serif; background: #f6f7fb; margin: 0; padding: 30px; }
+.card { max-width: 700px; margin: auto; background: white; border-radius: 12px; padding: 28px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+h1 { margin-top: 0; }
+input { width: 100%; padding: 12px; font-size: 16px; margin: 14px 0; box-sizing: border-box; }
+button { padding: 12px 18px; font-size: 16px; cursor: pointer; }
+#result { margin-top: 18px; font-weight: bold; }
+.hint { color: #555; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Level 5 - RSA Quiz</h1>
+<p>In RSA, which key must remain secret: public or private? Type one word.</p>
+<input id="answer" placeholder="Type your answer here">
+<button onclick="checkAnswer()">Submit</button>
+<p id="result"></p>
+<p class="hint">This page is part of the CMP315 Crypto Escape Game.</p>
+</div>
+<script>
+const answers = ["private", "private key"];
+const reward = "Correct. RSA private key passphrase: private-key";
+function normalize(s) { return s.toLowerCase().trim().replace(/\s+/g, ' '); }
+function checkAnswer() {
+  const value = normalize(document.getElementById('answer').value);
+  const ok = answers.map(normalize).includes(value);
+  document.getElementById('result').textContent = ok ? reward : 'Not correct yet. Try again.';
+  document.getElementById('result').style.color = ok ? 'green' : 'crimson';
+}
+</script>
+</body>
+</html>
